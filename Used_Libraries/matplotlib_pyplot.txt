@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+
+Aud 2
+=====
+
+plt.figure(figsize=(20,10))
+#       iscrtaj grafik
+
+plt.hist(data['trestbps'],bins=15)
+#        crta histogram od levo count dole trestbps i 15 BINS
+plt.show()
+#       go pokazuva
+===> data/sliki/histogram_plt_1.png
+
+plt.hist(data['chol'], bins=15, range=(100, 400))
+- Mozhe i da se nacrtaat dva histograma na eden grafik
+
+plt.bar(cp_counts.index.astype(str), cp_counts)
+plt.show()
+#crta bar chart so (x,y) axis
+#mora da bidat string ako nejkam so decimali bla bla
+====>data/sliki/bar_chart_matplotlib.png
+
+plt.boxplot(data['chol'])
+plt.show()
+====>data/sliki/box_plot.png
+
+data = data.sort_values('age')
+plt.plot(data['age'], data['chol'])
+=====>data/sliki/line_plot.png
+
+grouped_chol = data.groupby('age')['chol'].mean()
+#ova so pd i jako e poso e mean() i ne e isto ko prethodnoto
+plt.plot(grouped_chol)
+plt.show()
+
+
+
+

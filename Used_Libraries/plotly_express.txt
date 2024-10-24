@@ -1,0 +1,41 @@
+import plotly.express as px
+
+Aud 2
+=====
+
+px.area(
+    grouped,
+    x='age_grouped',
+    y="chol",
+    color = 'cp',
+    title='Cholesterol per age and cp',
+    width=800,
+    height=700
+)
+====>data/sliki/area_plot.png
+
+fig = px.bar(
+    grouped_sex_cp,
+    x='sex',
+    y="count",
+    color = 'cp',
+    title='Cp per sex',
+    width=800,
+    height=700
+)
+fig.show()
+====>data/sliki/bar_chart_multiple_categories.png
+
+ig = px.bar(
+    grouped_sex_cp,
+    x='sex',
+    y="count",
+    color = 'cp',
+    barmode='group', #novo
+    orientation='v', #novo
+    title='Cp per sex',
+    width=800,
+    height=700
+)
+fig.show() #e ova e shitot
+====>data/sliki/bar_chart_multiple_cat_2.png

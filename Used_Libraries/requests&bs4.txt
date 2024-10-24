@@ -1,0 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+
+AUD 2
+======
+
+response = requests.get(url)
+print(response.status_code)
+print(response.text)
+soup.select(".price-old-new")
+
+soup = BeautifulSoup(response.text,"html.parser")
+print(soup) #ubavo
+print(soup.prettify()) #poubavo
+soup.select_one(".price-old-new")
+soup.select(".price-old-new")
+soup.find_all('a',attrs={"data-original-title": "Додади во кошничка"})
+soup.find('a',attrs={"data-original-title": "Додади во кошничка"})
+

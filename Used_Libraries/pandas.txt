@@ -1,0 +1,56 @@
+import pandas as pd
+
+AUD2
+=====
+
+data = pd.DataFrame(matrix,columns=[1,2,3,4]) || df = pd.DataFrame(dict)
+data.head() - prvi n redici
+data.describe()
+#         karakteristiki za sekoja kolona
+data["atribut"]
+#         samo taa redica
+data["atribut"].quantile([0.25,0.5,0.75])
+data["age"].mean()
+data[['att1', 'att2']]
+
+cp_age_mean = data.groupby('cp')['age'].mean()
+#          will group the values of cp calculate the average age per chest pain type
+print(cp_age_mean)
+
+cp_counts = data.groupby('cp').size()
+print(cp_counts)
+cp_counts = data.groupby('cp').size()[0]
+#       broj na pati so cp bilo = 0
+
+data.cp.value_counts().plot.bar() #in pandas , mozhe oi vo matplotlib
+plt.show()
+====>data/sliki/bar_chart_pandas.png
+
+data = data.sort_values('age')
+
+grouped_chol = data.groupby('age')['chol'].mean()
+
+data['age_grouped'] = data['age'] // 10 * 10
+#       ova e vazno, vaka menuvas kolona...
+#       ustvari datafrejmot e mapa => atribut kluch , niza od vrednosti kako vrednost
+
+#       mnogu jako nesto, da groupirash spored dve
+grouped = data.groupby(['age_grouped', 'cp'])['chol'].mean()
+
+grouped_sex_cp = data.groupby(['sex', 'cp']).size().reset_index()
+grouped_sex_cp = grouped_sex_cp.rename(columns={0: 'count'})
+grouped_sex_cp
+
+#       sortiranje po dve i grupiranje
+grouped = data.groupby(['age_grouped', 'cp']).size().reset_index()
+grouped = grouped.rename(columns={0:"count"})
+grouped = grouped.sort_values(['age_grouped', 'cp'])
+
+
+
+
+
+
+
+
+
