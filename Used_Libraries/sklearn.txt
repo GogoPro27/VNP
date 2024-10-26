@@ -1,0 +1,29 @@
+from sklearn.impute import SimpleImputer, KNNImputer
+from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+
+
+AUD 3
+=====
+
+frequent_imputer = SimpleImputer(strategy = 'most_frequent')
+data['HomePlanet'] = data['HomePlanet'].astype(str)  # Simple imputer with most_frequent works with numbers (integers) and strings
+data['HomePlanet'] = frequent_imputer.fit_transform([data['HomePlanet']])[0]  # should fill missing values with 'Earth' since it's the most frequent
+#       zamenuva sekoj missing value so najcestiot
+#       moze da se odberat i drugi strategii, kako prosek...
+
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(data[['VRDeck', 'Spa']])
+knn_imputer = KNNImputer(n_neighbors=5)
+imputed_data = knn_imputer.fit_transform(scaled_data)
+imputed_data = scaler.inverse_transform(imputed_data)
+data[['VRDeck', 'Spa']] = imputed_data
+data.isnull().sum()
+#       mnogu vazen proces na popolnuvanje na missing values so KNN
+
+encoder = LabelEncoder()
+encoded_values = encoder.fit_transform(data['HomePlanet'])
+data['HomePlanet_Enc'] = encoded_values
+#       enkodira kategoriski vrednosti vo brojki

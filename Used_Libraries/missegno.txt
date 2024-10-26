@@ -1,0 +1,23 @@
+import missingno as msno
+
+AUD 3
+=====
+
+msno.bar(data)
+plt.show()
+====>data/sliki/aud3/missing_values_bar_chart.png
+
+
+msno.matrix(data)
+plt.show()
+msno.matrix(data.sort_values('VIP'))
+plt.show()
+===> data/sliki/aud3/missing_values_matrix_unsorted_sorted.png
+
+msno.heatmap(data) #korelacii pomegju missing values
+plt.show()
+====>data/sliki/aud3/missing_values_correlation_heatmap.png
+
+msno.dendrogram(data) #korelacii pak
+plt.show()
+====>data/sliki/aud3/missing_values_correlation_dendogram.png

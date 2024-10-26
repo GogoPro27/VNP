@@ -7,21 +7,21 @@ plt.figure(figsize=(10,10))
 sns.displot(data['trestbps'], kde=True, bins=15)
 plt.show()
  - The kde parameter draws the probability distribution over the histogram when set to true
-===>data/sliki/histogram_probability_sns.png
+===>data/sliki/AUD2/histogram_probability_sns.png
 
 
 data['cp'] = data['cp'].astype(str)
 sns.boxplot(data=data, x='cp', y='chol', hue='cp')
 plt.show()
-====>data/sliki/box_plot_multiple_cat.
+====>data/sliki/AUD2/box_plot_multiple_cat.
 
 sns.scatterplot(data=data, x='chol', y='trestbps')
 plt.show()
-====>data/sliki/scatter_plot.png
+====>data/sliki/AUD2/scatter_plot.png
 
 plt.figure(figsize=(20, 20))
 sns.heatmap(data.drop(columns=['sex', 'cp', 'target', 'fbs', 'slope', 'restecg', 'exang', 'ca', 'thal']).corr(), annot=True)  # data.corr() returns the correlation between each pair of variables
 plt.show()
-====>data/sliki/heatmap.png
+====>data/sliki/AUD2/heatmap.png
 
 

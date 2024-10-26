@@ -12,7 +12,7 @@ px.area(
     width=800,
     height=700
 )
-====>data/sliki/area_plot.png
+====>data/sliki/AUD2/area_plot.png
 
 fig = px.bar(
     grouped_sex_cp,
@@ -24,7 +24,7 @@ fig = px.bar(
     height=700
 )
 fig.show()
-====>data/sliki/bar_chart_multiple_categories.png
+====>data/sliki/AUD2/bar_chart_multiple_categories.png
 
 ig = px.bar(
     grouped_sex_cp,
@@ -38,4 +38,4 @@ ig = px.bar(
     height=700
 )
 fig.show() #e ova e shitot
-====>data/sliki/bar_chart_multiple_cat_2.png
+====>data/sliki/AUD2/bar_chart_multiple_cat_2.png

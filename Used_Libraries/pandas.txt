@@ -24,7 +24,7 @@ cp_counts = data.groupby('cp').size()[0]
 
 data.cp.value_counts().plot.bar() #in pandas , mozhe oi vo matplotlib
 plt.show()
-====>data/sliki/bar_chart_pandas.png
+====>data/sliki/AUD2/bar_chart_pandas.png
 
 data = data.sort_values('age')
 
@@ -46,9 +46,34 @@ grouped = data.groupby(['age_grouped', 'cp']).size().reset_index()
 grouped = grouped.rename(columns={0:"count"})
 grouped = grouped.sort_values(['age_grouped', 'cp'])
 
+AUD 3
+=====
+
+data.info()
+data.isnull().sum()
+
+data = data.dropna(subset=['RoomService'], axis=0)
+#       This line removes all rows that have missing (NaN) values in the 'RoomService' column.
+print(data["RoomService"].isnull().sum())
+
+data["Age"] = data["Age"].fillna(data.Age.mean())
+#       gi popolnuva site missing vrednosti so prosekot
 
 
+data[['VRDeck', 'Spa']].plot.hist(subplots=True)
+plt.show()
+#       dva histograma
 
+
+aq_data['NO2'] = aq_data['NO2'].bfill()
+aq_data['CO'] = aq_data['CO'].ffill()
+#       popolnuvanje nanapred i nanazad so ista vrednost
+
+aq_data['PM10'] = aq_data['PM10'].interpolate(limit_direction='both')
+#       popolnuva vo odnos na vrednostite pogore i podole
+
+data['CryoSleep_Enc'] = data.CryoSleep.apply(funkcija)
+#       menuva vrednosti spored f-ja
 
 
 
