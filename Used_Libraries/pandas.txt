@@ -75,7 +75,9 @@ aq_data['PM10'] = aq_data['PM10'].interpolate(limit_direction='both')
 data['CryoSleep_Enc'] = data.CryoSleep.apply(funkcija)
 #       menuva vrednosti spored f-ja
 
-
+one_hot_destination = pd.get_dummies(data.Destination)
+data = pd.concat([data, one_hot_destination], axis=1)
+# one_hot encoder
 
 
 
