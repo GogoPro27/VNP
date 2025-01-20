@@ -9,7 +9,7 @@ def impute_knn(df:pd.DataFrame, columns:list, n_neighbors=5):
     df_copy = df.copy()
     scaler = MinMaxScaler()
     scaled_data = scaler.fit_transform(df_copy[columns])
-    knn_imputer = KNNImputer(n_neighbors=5)
+    knn_imputer = KNNImputer(n_neighbors=n_neighbors)
     imputed_data = knn_imputer.fit_transform(scaled_data)
     df_copy[columns] = imputed_data
     return df_copy
@@ -23,10 +23,11 @@ def label_encoder(dataframe: pd.DataFrame, columns: list) -> pd.DataFrame:
         mask = df_copy[column].isnull()
         df_copy[column] = le.fit_transform(df_copy[column].astype(str))
         df_copy.loc[mask, column] = None
+    # or just ... labels = oe.fit_transform(df[["Value"]])
     return df_copy
 
 
-def simple_imputdr(dataframe: pd.DataFrame, strategy: str, columns) -> pd.DataFrame:
+def simple_imputer(dataframe: pd.DataFrame, strategy: str, columns) -> pd.DataFrame:
     df_copy = dataframe.copy()
     for column_name in columns:
         imputer = SimpleImputer(strategy=strategy)
@@ -58,7 +59,13 @@ def not_important(df: pd.DataFrame,target:str):
 
     return not_important_attributes
 
-def cat_num_attrs(df):
-    categorical_attributes = [col for col in df.columns if len(df[col].unique())<10]
-    numerical_attributes = [col for col in df.columns if len(df[col].unique())>10]
-    return categorical_attributes,numerical_attributes
+def qualitative_quantitative_attrs(df):
+    qualitative_attributes = [col for col in df.columns if len(df[col].unique())<10]
+    quantitative_attributes = [col for col in df.columns if len(df[col].unique())>10]
+    return qualitative_attributes,quantitative_attributes
+
+#casting to int
+def cast_to_int(df: pd.DataFrame, columns: list) -> pd.DataFrame:
+    df = df.copy()
+    df[columns] = df[columns].astype(int)
+    return df
